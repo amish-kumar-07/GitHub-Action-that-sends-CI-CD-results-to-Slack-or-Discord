@@ -1,0 +1,25 @@
+name: CI/CD Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Tests
+        run: |
+          echo "Running tests..."
+          # simulate pass/fail: use `exit 1` for fail
+          exit 0
+
+      - name: Notify on Slack/Discord
+        if: always() # Run regardless of pass/fail
+        uses: ./
+        with:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          platform: "discord" # or "slack"
+          status: ${{ job.status }}
