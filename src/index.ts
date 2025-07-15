@@ -17,14 +17,6 @@ async function run() {
     const emoji = status === "success" ? "✅" : status === "failure" ? "❌" : "⚠️";
     const color = status === "success" ? "good" : status === "failure" ? "danger" : "warning";
     const colorCode = status === "success" ? 0x2ecc71 : status === "failure" ? 0xe74c3c : 0xf1c40f;
-    console.log("Webhook URL:", webhookUrl);
-    console.log("Platform:", platform);
-    console.log("Status:", status);
-    console.log("Repo:", `${owner}/${repo}`);
-    console.log("Branch:", branch);
-    console.log("Commit:", commit);
-    console.log("Actor:", actor);
-
 
     if (platform === "slack") {
       const slackPayload = {
